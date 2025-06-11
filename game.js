@@ -53,7 +53,7 @@ function frame_process()
 	score++;
 	timer++;
 	
-	obstacle_period = getRandom(120, 170);
+	obstacle_period = getRandom(25, 75);
 	
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	
@@ -61,6 +61,7 @@ function frame_process()
 	{
 		var cactus = new Obstacle();
 		obstacle_arr.push(cactus);
+		timer = 0;
 	}
 
 	if (is_it_jumping == true)
@@ -76,12 +77,16 @@ function frame_process()
 		{
 			dino.y += 5;
 		}
+		
+		else
+		{
+			jump_timer = 0;
+		}
 	}
 	
 	if (jump_timer > 30)
 	{
 		is_it_jumping = false;
-		jump_timer = 0
 	}
 	
 	if (dinocode == 5)
